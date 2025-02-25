@@ -52,25 +52,25 @@ Open your browser and navigate to http://localhost:8000
 <h1 align='center'>Some picture about our website</h1>
 <h2>Login, register</h2>
 <div align='center'>
-    <img src='https://drive.google.com/file/d/1feMhs6rwQ5uELSC3FJRHP8-QU2J2D1nW/view?usp=drive_link'>
-    <img src='https://drive.google.com/file/d/1KiI4nqRewuudLyymn6Q7iB0wgKwkFv2d/view?usp=drive_link'>
+    <img src='https://github.com/user-attachments/assets/63ea42d2-f3ae-45fe-b537-ef05400ebf76'>
+    <img src='https://github.com/user-attachments/assets/2d9a3781-5d4a-40fb-a0e4-0031c2ab8362'>
 </div>
 
 <h2>Customers Management</h2>
 <div align='center' >
-    <img src='https://drive.google.com/file/d/134SLChx_fi1c1yKrPSgbypWPwvUucRP8/view?usp=drive_link'>
-    <img src='https://drive.google.com/file/d/1_YOR_UpzNKZxHF1KSpP9FpxEMk57b4-I/view?usp=drive_link'>
+    <img src='https://github.com/user-attachments/assets/f6321eec-05ad-40e6-b510-0dfc80f6650f'>
+    <img src='https://github.com/user-attachments/assets/4b046480-3a50-443e-bcbe-736ae261ccee'>
 </div>
 <hr>
 <h2>Rooms Management</h2>
 <div align='center' >
-    <img src='https://drive.google.com/file/d/1uJGPXA2HHwFL0nkg98p26ZjE_bzsd9p5/view?usp=drive_link'>
-    <img src='https://drive.google.com/file/d/1T_wS5ECdFqJ91wSYZ--ZWDPHOUJRcFPV/view?usp=drive_link'>
+    <img src='https://github.com/user-attachments/assets/a6ca8a97-17ee-4e89-85f4-90bfe643d4dd'>
+    <img src='https://github.com/user-attachments/assets/80bd2af5-2390-465f-8905-f8a6a241fb01'>
 </div>
 <hr>
 <h2>Bookings Management</h2>
 <div align='center' >
-    <img src='https://drive.google.com/file/d/1VPtR_ZKuMA_M-Vbs9ttLPxhU4kWa71t5/view?usp=drive_link'>
-    <img src='https://drive.google.com/file/d/1u0qlPAPtjajfUgjhM_MiN4P1UyCmm1bz/view?usp=drive_link'>
+    <img src='https://github.com/user-attachments/assets/ebf8f0a6-c6a8-410e-89c1-097e8420324d'>
+    <img src='https://github.com/user-attachments/assets/56ba6371-8af9-4afe-a964-3b5723475574'>
 </div>
 <hr>
