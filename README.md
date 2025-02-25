@@ -19,7 +19,7 @@
 <h1 align='center'>How to deploy - Local Development</h1>
 Clone the Repository:
 
-    git clone
+    git clone https://github.com/truongnguyenthe/Hotel_Booking.git
     cd hotel_booking
 
 Install Dependencies:
