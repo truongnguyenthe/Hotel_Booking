@@ -60,7 +60,15 @@ class CustomerController extends Controller
 
     public function destroy($id)
     {
-        Customer::destroy($id);
-        return redirect()->route('customers.index');
+        $customer = Customer::findOrFail($id);
+
+        // Kiểm tra nếu khách hàng có đặt phòng (giả sử có mối quan hệ bookings)
+        if ($customer->bookings()->exists()) {
+            return redirect()->route('customers.index')->withErrors(['customer' => 'Cannot delete customer with active bookings!']);
+        }
+
+        $customer->delete();
+        return redirect()->route('customers.index')->with('success', 'Customer deleted successfully!');
     }
+
 }

@@ -38,7 +38,7 @@ class BookingController extends Controller
     {
         $request->validate([
             'room_id' => 'required|exists:rooms,id',
-            'customer_id' => 'required|exists:customers,id', // Sử dụng customer_id
+            'customer_id' => 'required|exists:customers,id',
             'start_date' => 'required|date|after_or_equal:today',
             'end_date' => 'required|date|after:start_date',
         ]);
@@ -54,11 +54,11 @@ class BookingController extends Controller
         try {
             $booking = new Booking();
             $booking->room_id = $room->id;
-            $booking->customer_name = $customer->name; // Sử dụng customer name từ customer model.
+            $booking->customer_name = $customer->name;
             $booking->start_date = $request->start_date;
             $booking->end_date = $request->end_date;
 
-            Log::info('Booking data before saving:', $booking->toArray());
+            // Log::info('Booking data before saving:', $booking->toArray());
 
             $booking->save();
 

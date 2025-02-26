@@ -36,9 +36,13 @@ class RoomController extends Controller
             'price' => 'required|numeric',
             'status' => 'required|in:available,booked',
         ]);
+        // Kiểm tra nếu phòng đã tồn tại với cùng tên
+        if (Room::where('name', $request->name)->exists()) {
+            return back()->withErrors(['name' => 'Room name already exists!'])->withInput();
+        }
 
         Room::create($request->all());
-        return redirect()->route('rooms.index')->with('success', 'Phòng đã được tạo thành công!');
+        return redirect()->route('rooms.index')->with('success', 'Room has been created successfully!');
     }
 
     public function edit(Room $room)
@@ -57,22 +61,22 @@ class RoomController extends Controller
 
         // Nếu phòng đang có đặt chỗ, không cho phép đổi trạng thái thành "available"
         if ($room->bookings()->exists() && $request->status === 'available') {
-            return back()->withErrors(['status' => 'Không thể đổi trạng thái thành "available" vì phòng đang có đặt chỗ!']);
+            return back()->withErrors(['status' => 'The status cannot be changed to "available" because the room is currently booked!']);
         }
 
         $room->update($request->all());
-        return redirect()->route('rooms.index')->with('success', 'Cập nhật phòng thành công!');
+        return redirect()->route('rooms.index')->with('success', 'Room update successful!');
     }
 
     public function destroy(Room $room)
     {
         // Kiểm tra nếu phòng có đặt chỗ, không cho phép xóa
         if ($room->bookings()->exists()) {
-            return redirect()->route('rooms.index')->withErrors(['room_id' => 'Không thể xóa phòng vì phòng này đang có đặt chỗ!']);
+            return redirect()->route('rooms.index')->withErrors(['room_id' => 'The room cannot be deleted because it is currently booked!']);
         }
 
         $room->delete();
-        return redirect()->route('rooms.index')->with('success', 'Xóa phòng thành công!');
+        return redirect()->route('rooms.index')->with('success', 'Successfully deleted room!');
     }
 
     public function show($id)

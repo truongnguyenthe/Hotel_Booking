@@ -6,8 +6,8 @@
 <p>I from PHENIKAA UNIVERSITY</p>
 <h1>About our project</h1>
 <p>This is a hotel reservation management website that aims to provide managers with a flexible and convenient platform to organize and manage daily reservation activities.</p>
-<p>Detailed project documentation is <a href='https://docs.google.com/document/d/1pPRFK8-7eGDwQK-s4U3D7Tsnr4lfjyCykh76kzrIU3Y/edit?usp=sharing'>here</a></p>
-<p>The API documentation is <a href=''>here</a></p>
+<p>Detailed project documentation is <a href='https://docs.google.com/document/d/1cEyJOshPMSjuL2bx_j-zWXR2zBE4fFndfIOqP39O8zs/edit?usp=sharing'>here</a></p>
+<!-- <p>The API documentation is <a href=''>here</a></p> -->
 <h2>Main functions include:</h2>
 <ul>
     <li>Account management</li>
@@ -48,7 +48,7 @@ Visit the Application:
 
 Open your browser and navigate to http://localhost:8000
 
-<h3>Our product: <a href='https://supreme-system-jjrxpxjw4p793qxvw-8001.app.github.dev'>Link website</a></h3>
+<h3>Our product: <a href=''>Link website</a></h3>
 <h1 align='center'>Some picture about our website</h1>
 <h2>Login, register</h2>
 <div align='center'>
