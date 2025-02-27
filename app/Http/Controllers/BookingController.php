@@ -54,6 +54,7 @@ class BookingController extends Controller
         try {
             $booking = new Booking();
             $booking->room_id = $room->id;
+            $booking->customer_id = $customer->id; 
             $booking->customer_name = $customer->name;
             $booking->start_date = $request->start_date;
             $booking->end_date = $request->end_date;
@@ -61,6 +62,7 @@ class BookingController extends Controller
             $booking->save();
 
             $room->update(['status' => 'booked']);
+            $customer->update(['status' => 'Booking']);
 
             DB::commit();
 
@@ -111,11 +113,15 @@ class BookingController extends Controller
     public function destroy(Booking $booking)
     {
         $room = $booking->room;
+        $customer = $booking->customer;
 
         $booking->delete();
 
         if (!Booking::where('room_id', $room->id)->exists()) {
             $room->update(['status' => 'available']);
+        }
+        if (!$customer->bookings()->exists()) {
+        $customer->update(['status' => 'No Booking']);
         }
 
         return redirect()->route('bookings.index')->with('success', 'Booking canceled successfully!');

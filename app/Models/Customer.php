@@ -17,5 +17,9 @@ class Customer extends Model
     {
         return $this->hasMany(Booking::class,'customer_id');
     }
+    public function getStatusAttribute()
+    {
+        return $this->bookings()->exists() ? 'Booking' : 'No Booking';
+    }
 
 }

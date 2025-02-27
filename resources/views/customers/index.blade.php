@@ -3,6 +3,23 @@
 @section('content')
 <div class="container mt-5">
     <h2 class="mb-4 text-center fw-bold">👥 Manage Customers</h2>
+    {{-- @if (session('customer_error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-circle"></i> {{ session('customer_error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif --}}
+    @if ($errors->has('customer_error'))
+        <div class="alert alert-danger">
+            {{ $errors->first('customer_error') }}
+        </div>
+    @endif
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
 
     <!-- Thanh tìm kiếm và nút thêm khách hàng -->
     <form action="{{ route('customers.index') }}" method="GET">
@@ -27,6 +44,7 @@
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Address</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -37,6 +55,12 @@
                             <td>{{ $customer->email }}</td>
                             <td>{{ $customer->phone }}</td>
                             <td>{{ $customer->address }}</td>
+                            <td>
+                                <span class="badge {{ $customer->bookings()->exists() ? 'bg-success' : 'bg-secondary' }}">
+                                    {{ $customer->status }}
+                                </span>
+                            </td>
+                            <td>
                                 <a href="{{ route('customers.show', $customer->id) }}" class="btn btn-info btn-sm text-white me-2 shadow-sm">
                                     🔍 Show
                                 </a>

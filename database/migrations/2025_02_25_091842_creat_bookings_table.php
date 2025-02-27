@@ -14,7 +14,7 @@ return new class extends Migration
             $table->id(); 
             $table->timestamps(); 
             
-            $table->unsignedBigInteger('customer_id')->nullable();
+             $table->foreignId('customer_id')->nullable()->constrained('customers')->onDelete('cascade');
 
             
             $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('customer_name'); 
             $table->date('start_date'); 
             $table->date('end_date')->nullable(); 
-            $table->softDeletes; 
+            $table->softDeletes(); 
         });
     }
 

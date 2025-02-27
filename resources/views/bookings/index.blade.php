@@ -5,6 +5,11 @@
         <h2 class="mb-4 text-center fw-bold">
             <i class="fas fa-calendar-check"></i> Manage Bookings
         </h2>
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
 
         <!-- Thanh tìm kiếm -->
         <form action="{{ route('bookings.index') }}" method="GET">

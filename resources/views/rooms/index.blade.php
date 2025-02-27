@@ -9,6 +9,17 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
+    {{-- @if ($errors->has('room_error'))
+        <div class="alert alert-danger">
+            {{ $errors->first('room_error') }}
+        </div>
+    @endif --}}
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
 
     <!-- Thanh tìm kiếm và nút thêm phòng -->
     <form action="{{ route('rooms.index') }}" method="GET">

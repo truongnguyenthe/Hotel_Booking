@@ -16,7 +16,9 @@ class RoomController extends Controller
             $query->where('name', 'like', '%' . $request->search . '%')
                 ->orWhere('description', 'like', '%' . $request->search . '%');
         }
-
+        if (is_numeric($request->search)) {
+            $query->orWhere('price', $request->search);
+        }
 
         $rooms = $query->paginate(10);
 
@@ -31,7 +33,7 @@ class RoomController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|regex:/^[A-Za-z\s]+$/',
             'description' => 'required|string',
             'price' => 'required|numeric',
             'status' => 'required|in:available,booked',
@@ -55,7 +57,7 @@ class RoomController extends Controller
     public function update(Request $request, Room $room)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|regex:/^[A-Za-z\s]+$/',
             'description' => 'required|string',
             'price' => 'required|numeric',
             'status' => 'required|in:available,booked',

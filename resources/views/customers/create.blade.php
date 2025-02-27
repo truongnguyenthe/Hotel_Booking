@@ -43,9 +43,13 @@
                     <input type="text" name="phone" id="phone"
                         class="form-control rounded-pill px-3 @error('phone') is-invalid @enderror"
                         placeholder="Enter customer phone" value="{{ old('phone') }}" required>
-                    @error('phone')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+                    @if ($errors->has('phone'))
+                        <div class="alert alert-danger d-flex align-items-center mt-2" role="alert">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            <span>{{ $errors->first('phone') }}</span>
+                        </div>
+                    @endif
+
                 </div>
 
                 <div class="mb-3">

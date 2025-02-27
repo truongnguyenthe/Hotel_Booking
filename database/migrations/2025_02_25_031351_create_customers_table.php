@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone');
             $table->text('address');
-            enum('status', ['available', 'booked'])->default('available');
             $table->timestamps();
         });
     }
