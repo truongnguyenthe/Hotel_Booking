@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('customer_name'); // Tên khách hàng
             $table->date('start_date'); // Ngày bắt đầu
             $table->date('end_date')->nullable(); // Ngày kết thúc (có thể null)
-            $table->softDeletes(); // Hỗ trợ xóa mềm
+            $table->softDeletes; // Hỗ trợ xóa mềm
         });
     }
 

@@ -48,7 +48,7 @@ class BookingController extends Controller
             return back()->withErrors(['room_id' => 'This room is already booked, please choose another room!'])->withInput();
         }
 
-        $customer = Customer::findOrFail($request->customer_id); // Lấy customer từ database
+        $customer = Customer::findOrFail($request->customer_id);
 
         DB::beginTransaction();
         try {
@@ -57,8 +57,6 @@ class BookingController extends Controller
             $booking->customer_name = $customer->name;
             $booking->start_date = $request->start_date;
             $booking->end_date = $request->end_date;
-
-            // Log::info('Booking data before saving:', $booking->toArray());
 
             $booking->save();
 
@@ -97,7 +95,7 @@ class BookingController extends Controller
 
         if ($request->room_id != $booking->room_id) {
             $newRoom = Room::findOrFail($request->room_id);
-            if ($newRoom->status === 'booked' && $newRoom->id !== $booking->room_id) { // Fix: allow changing to the same room
+            if ($newRoom->status === 'booked' && $newRoom->id !== $booking->room_id) { 
                 return back()->withErrors(['room_id' => 'This room is already booked, please choose another room!'])->withInput();
             }
 

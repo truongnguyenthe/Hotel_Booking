@@ -56,7 +56,7 @@
                         <label for="start_date" class="form-label font-weight-bold"><i class="fas fa-calendar-alt"></i> Start Date</label>
                         <input type="date" name="start_date" id="start_date" class="form-control" value="{{ old('start_date') }}" required>
 
-                        {{-- Hiển thị thông báo lỗi cho start_date --}}
+                        
                         @if ($errors->has('start_date'))
                             <div class="alert alert-danger mt-2">
                                 <strong>{{ $errors->first('start_date') }}</strong>
@@ -69,7 +69,7 @@
                         <label for="end_date" class="form-label font-weight-bold"><i class="fas fa-calendar-check"></i> End Date</label>
                         <input type="date" name="end_date" id="end_date" class="form-control" value="{{ old('end_date') }}" required>
                         
-                        {{-- Hiển thị thông báo lỗi cho end_date --}}
+                        
                         @if ($errors->has('end_date'))
                             <div class="alert alert-danger mt-2">
                                 <strong>{{ $errors->first('end_date') }}</strong>

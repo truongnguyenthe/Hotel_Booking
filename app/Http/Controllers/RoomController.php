@@ -11,13 +11,12 @@ class RoomController extends Controller
     {
         $query = Room::query();
 
-        // Tìm kiếm theo tên hoặc mô tả phòng
         if ($request->has('search') && $request->search != '') {
             $query->where('name', 'like', '%' . $request->search . '%')
                 ->orWhere('description', 'like', '%' . $request->search . '%');
         }
 
-        // Lấy danh sách phòng, phân trang nếu có hoặc hiển thị tất cả nếu không có tìm kiếm
+
         $rooms = $query->paginate(10);
 
         return view('rooms.index', compact('rooms'));
@@ -36,7 +35,7 @@ class RoomController extends Controller
             'price' => 'required|numeric',
             'status' => 'required|in:available,booked',
         ]);
-        // Kiểm tra nếu phòng đã tồn tại với cùng tên
+
         if (Room::where('name', $request->name)->exists()) {
             return back()->withErrors(['name' => 'Room name already exists!'])->withInput();
         }
@@ -59,7 +58,6 @@ class RoomController extends Controller
             'status' => 'required|in:available,booked',
         ]);
 
-        // Nếu phòng đang có đặt chỗ, không cho phép đổi trạng thái thành "available"
         if ($room->bookings()->exists() && $request->status === 'available') {
             return back()->withErrors(['status' => 'The status cannot be changed to "available" because the room is currently booked!']);
         }
@@ -70,7 +68,6 @@ class RoomController extends Controller
 
     public function destroy(Room $room)
     {
-        // Kiểm tra nếu phòng có đặt chỗ, không cho phép xóa
         if ($room->bookings()->exists()) {
             return redirect()->route('rooms.index')->withErrors(['room_id' => 'The room cannot be deleted because it is currently booked!']);
         }

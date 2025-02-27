@@ -48,16 +48,16 @@
                                 </td> --}}
                                 <td>
                                     <a href="{{ route('bookings.show', $booking->id) }}" class="btn btn-info btn-sm">
-                                        <i class="fas fa-eye"></i>  🔍 Show
+                                        <i class="fas fa-eye"></i>   Show
                                     </a>
-                                    <a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-warning btn-sm">
-                                        <i class="fas fa-edit"></i> ✏️ Edit
-                                    </a>
+                                    {{-- <a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-warning btn-sm">
+                                        <i class="fas fa-edit"></i>  Edit
+                                    </a> --}}
                                     <form action="{{ route('bookings.destroy', $booking->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">
-                                            <i class="fas fa-trash"></i> 🗑️ Delete
+                                            <i class="fas fa-trash"></i>  Delete
                                         </button>
                                     </form>
                                 </td>

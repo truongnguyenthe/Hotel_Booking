@@ -11,6 +11,7 @@ class CustomerController extends Controller
     {
         $customers = Customer::all();
         
+        
         return view('customers.index', compact('customers'));
     }
 
@@ -23,13 +24,23 @@ class CustomerController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:customers',
+            'email' => 'required|email',
             'phone' => 'required',
             'address' => 'required',
         ]);
 
-        Customer::create($request->all());
-        return redirect()->route('customers.index');
+        // Kiểm tra email đã tồn tại hay chưa
+        if (Customer::where('email', $request->email)->exists()) {
+            return redirect()->back()->withInput()->withErrors(['email' => 'Email already exists.']);
+        }
+
+        try {
+            Customer::create($request->all());
+            return redirect()->route('customers.index')->with('success', 'Customer created successfully!');
+        } catch (\Exception $e) {
+            Log::error('Error creating customer: ' . $e->getMessage());
+            return redirect()->back()->withInput()->withErrors(['error' => 'An error occurred while creating the customer. Please try again.']);
+        }
     }
 
     public function show($id)
@@ -54,7 +65,7 @@ class CustomerController extends Controller
         ]);
 
         $customer = Customer::findOrFail($id);
-        $customer->update($request->all());
+        $customer->update($request->except('email'));
         return redirect()->route('customers.index');
     }
 
@@ -62,7 +73,6 @@ class CustomerController extends Controller
     {
         $customer = Customer::findOrFail($id);
 
-        // Kiểm tra nếu khách hàng có đặt phòng (giả sử có mối quan hệ bookings)
         if ($customer->bookings()->exists()) {
             return redirect()->route('customers.index')->withErrors(['customer' => 'Cannot delete customer with active bookings!']);
         }

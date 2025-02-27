@@ -43,9 +43,7 @@
                                 </span>
                             </td>
                             <td>
-                                {{-- <a href="{{ route('rooms.show', $room->id) }}" class="btn btn-info btn-sm text-white me-2 shadow-sm">
-                                    🔍 Show
-                                </a> --}}
+                                
                                 <a href="{{ route('rooms.edit', $room->id) }}" class="btn btn-warning btn-sm text-white me-2 shadow-sm">
                                     ✏️ Edit
                                 </a>

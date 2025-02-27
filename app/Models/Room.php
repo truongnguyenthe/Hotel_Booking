@@ -10,7 +10,6 @@ class Room extends Model
 
     protected $fillable = ['name', 'description', 'price', 'status'];
 
-    // Thêm quan hệ với Booking
     public function bookings()
     {
         return $this->hasMany(Booking::class, 'room_id');
