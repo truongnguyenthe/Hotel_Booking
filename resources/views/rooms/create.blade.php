@@ -53,14 +53,10 @@
                 {{-- Status --}}
                 <div class="mb-3">
                     <label class="form-label fw-bold">📌 Status</label>
-                    <select name="status" class="form-select rounded-pill px-3 @error('status') is-invalid @enderror">
-                        <option value="available" {{ old('status') == 'available' ? 'selected' : '' }}>✅ Available</option>
-                        <option value="booked" {{ old('status') == 'booked' ? 'selected' : '' }}>❌ Booked</option>
-                    </select>
-                    @error('status')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+                    <input type="text" class="form-control rounded-pill px-3" value="Available" disabled>
+                    <input type="hidden" name="status" value="available"> 
                 </div>
+
 
                 {{-- Buttons --}}
                 <button type="submit" class="btn btn-primary w-100 py-2 fw-bold rounded-pill shadow-sm">

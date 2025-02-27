@@ -9,6 +9,7 @@ class RoomController extends Controller
 {
     public function index(Request $request)
     {
+        
         $query = Room::query();
 
         if ($request->has('search') && $request->search != '') {
@@ -39,6 +40,8 @@ class RoomController extends Controller
         if (Room::where('name', $request->name)->exists()) {
             return back()->withErrors(['name' => 'Room name already exists!'])->withInput();
         }
+        $data = $request->all();
+        $data['status'] = 'available';  
 
         Room::create($request->all());
         return redirect()->route('rooms.index')->with('success', 'Room has been created successfully!');
@@ -57,9 +60,17 @@ class RoomController extends Controller
             'price' => 'required|numeric',
             'status' => 'required|in:available,booked',
         ]);
+        
+        if ($room->bookings()->exists()) {
+            // Kiểm tra nếu người dùng muốn thay đổi giá phòng
+            if ($request->price != $room->price) {
+                return back()->withErrors(['price' => 'The price cannot be changed because the room is currently booked!']);
+            }
 
-        if ($room->bookings()->exists() && $request->status === 'available') {
-            return back()->withErrors(['status' => 'The status cannot be changed to "available" because the room is currently booked!']);
+            // Kiểm tra nếu người dùng muốn đặt lại trạng thái thành "available"
+            if ($request->status === 'available') {
+                return back()->withErrors(['status' => 'The status cannot be changed to "available" because the room is currently booked!']);
+            }
         }
 
         $room->update($request->all());
@@ -68,13 +79,15 @@ class RoomController extends Controller
 
     public function destroy(Room $room)
     {
+        
         if ($room->bookings()->exists()) {
-            return redirect()->route('rooms.index')->withErrors(['room_id' => 'The room cannot be deleted because it is currently booked!']);
+            return redirect()->route('rooms.index')->with('room_error', 'The room cannot be deleted because it has existing bookings!');
         }
 
         $room->delete();
         return redirect()->route('rooms.index')->with('success', 'Successfully deleted room!');
     }
+
 
     public function show($id)
     {

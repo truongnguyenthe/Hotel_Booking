@@ -3,6 +3,12 @@
 @section('content')
 <div class="container mt-5">
     <h2 class="mb-4 text-center fw-bold">🏨 Manage Rooms</h2>
+    @if (session('room_error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-circle"></i> {{ session('room_error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
     <!-- Thanh tìm kiếm và nút thêm phòng -->
     <form action="{{ route('rooms.index') }}" method="GET">
@@ -17,10 +23,10 @@
         </div>
     </form>
 
-
     <!-- Bảng danh sách phòng -->
     <div class="card shadow-lg rounded">
         <div class="card-body">
+            
             <table class="table table-hover align-middle">
                 <thead class="bg-dark text-white text-center">
                     <tr>

@@ -37,7 +37,6 @@
                             <td>{{ $customer->email }}</td>
                             <td>{{ $customer->phone }}</td>
                             <td>{{ $customer->address }}</td>
-                            <td>
                                 <a href="{{ route('customers.show', $customer->id) }}" class="btn btn-info btn-sm text-white me-2 shadow-sm">
                                     🔍 Show
                                 </a>

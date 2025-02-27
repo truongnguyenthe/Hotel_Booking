@@ -41,18 +41,12 @@
                                 <td>{{ $booking->room->name }}</td>
                                 <td>{{ $booking->start_date }}</td>
                                 <td>{{ $booking->end_date ?? 'N/A' }}</td>
-                                {{-- <td>
-                                    <span class="badge {{ $booking->status == 'confirmed' ? 'bg-success' : ($booking->status == 'pending' ? 'bg-warning' : 'bg-danger') }}">
-                                        {{ ucfirst($booking->status) }}
-                                    </span>
-                                </td> --}}
+                                
                                 <td>
                                     <a href="{{ route('bookings.show', $booking->id) }}" class="btn btn-info btn-sm">
                                         <i class="fas fa-eye"></i>   Show
                                     </a>
-                                    {{-- <a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-warning btn-sm">
-                                        <i class="fas fa-edit"></i>  Edit
-                                    </a> --}}
+                                    
                                     <form action="{{ route('bookings.destroy', $booking->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')

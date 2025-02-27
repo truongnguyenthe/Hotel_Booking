@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name'); // Tên phòng
-            $table->text('description'); // Mô tả phòng
-            $table->decimal('price', 10); // Giá phòng với 2 chữ số thập phân
-            $table->enum('status', ['available', 'booked'])->default('available'); // Trạng thái phòng, thêm 'maintenance' để phòng bảo trì
+            $table->string('name'); 
+            $table->text('description');
+            $table->decimal('price', 10); 
+            $table->enum('status', ['available', 'booked'])->default('available'); 
         });
     }
 

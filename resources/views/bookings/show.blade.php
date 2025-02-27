@@ -35,9 +35,7 @@
             <a href="{{ route('bookings.index') }}" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Back
             </a>
-            <a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-warning">
-                <i class="fas fa-edit"></i> Edit
-            </a>
+            
         </div>
     </div>
 </div>
