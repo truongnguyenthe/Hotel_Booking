@@ -7,7 +7,6 @@
 <h1>About our project</h1>
 <p>This is a hotel reservation management website that aims to provide managers with a flexible and convenient platform to organize and manage daily reservation activities.</p>
 <p>Detailed project documentation is <a href='https://docs.google.com/document/d/1cEyJOshPMSjuL2bx_j-zWXR2zBE4fFndfIOqP39O8zs/edit?usp=sharing'>here</a></p>
-<p>The API documentation is <a href=''>here</a></p>
 <h2>Main functions include:</h2>
 <ul>
     <li>Account management</li>
