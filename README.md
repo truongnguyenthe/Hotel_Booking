@@ -3,7 +3,6 @@
 <ul>
     <a href = 'https://github.com/truongnguyenthe' ><li>Nguyễn Thế Trường - 22010212</li></a>
 </ul>
-<p>I from PHENIKAA UNIVERSITY</p>
 <h1>About our project</h1>
 <p>This is a hotel reservation management website that aims to provide managers with a flexible and convenient platform to organize and manage daily reservation activities.</p>
 <p>Detailed project documentation is <a href='https://docs.google.com/document/d/1cEyJOshPMSjuL2bx_j-zWXR2zBE4fFndfIOqP39O8zs/edit?usp=sharing'>here</a></p>
