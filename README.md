@@ -47,6 +47,8 @@ Start the Local Development Server:
 Visit the Application:
 
 Open your browser and navigate to http://localhost:8000
+Hotel_Booking Repo Link:https://github.com/truongnguyenthe/Hotel_Booking.git
+Hotel_Booking Website Link:https://supreme-system-jjrxpxjw4p793qxvw-8001.app.github.dev/
 
 <h3>Our product: <a href=''>Link website</a></h3>
 <h1 align='center'>Some picture about our website</h1>
